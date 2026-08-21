@@ -355,3 +355,56 @@ Streamlit: http://localhost:8501
 ## Notes
 
 SQLite is used for this take-home submission to avoid external database provisioning. The DB file is generated at `data/fleet_copilot.db` and is ignored by Git.
+
+architecture
+
+START
+  ↓
+Request Context
+  ↓
+Planner
+  ↓
+Agent / Tool Loop
+  ↓
+Read Tool(s)
+  ↓
+Evidence Collector
+  ↓
+Evidence Validator
+  ↓
+Question only?
+  ├── YES → Response → END
+  │
+  └── NO / Action requested
+            ↓
+       Action Proposal Node
+            ↓
+       Evidence Policy Check
+            ↓
+       enough evidence?
+        ├── NO → refuse action → END
+        │
+        └── YES
+              ↓
+        Store action_proposal
+              ↓
+        Human Approval Interrupt
+              ↓
+          Approve / Reject
+            /        \
+         Reject      Approve
+           ↓            ↓
+          END      Revalidate:
+                   authentication
+                   authorization
+                   tenant
+                   evidence
+                   approval
+                       ↓
+                  Action Tool
+                       ↓
+                Operational Table
+                       ↓
+                   Audit Log
+                       ↓
+                      END
