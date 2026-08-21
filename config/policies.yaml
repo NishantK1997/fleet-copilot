@@ -1,0 +1,13 @@
+read_tools:
+  low_disk_percent: 10
+  persistent_ratio: 0.5
+  memory_used_percent: 85
+  battery_cycle_count: 900
+  battery_capacity_low: 5000
+insights:
+  low_disk_percent: 10
+  memory_used_percent: 85
+  persistent_ratio: 0.5
+  battery_cycle_count: 900
+  battery_capacity_low: 5000
+  compliance_drift_fail_ratio: 0.25
